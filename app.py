@@ -261,7 +261,8 @@ def main():
                         else:
                             continue
                         harga_jual = round(filtered_price * volume_input, 2)
-                        filtered_table_data.append([negara, filtered_price, harga_jual])
+                        filtered_table_data.append([negara, round(filtered_price, 1), round(harga_jual, 1)])
+
 
                 if filtered_table_data:
                     st.write("Hasil Prediksi:")
