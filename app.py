@@ -132,6 +132,7 @@ def main():
             <p style='text-align: center; margin-top: 20px;'>Temukan prediksi terkini untuk nilai harga dan volume produksi dalam industri perkebunan <br>untuk membantu Anda mengambil keputusan yang lebih cerdas dan tepat waktu.</p>
             """,
             unsafe_allow_html=True)
+
         col1, col2, col3 = st.columns([1, 4, 1])  # Membagi layout menjadi 3 bagian
         with col2:
             st.image('sawi.jpg' , use_column_width=True, output_format='JPEG')
@@ -182,18 +183,33 @@ def main():
                 unsafe_allow_html=True
             )
         st.markdown(
-        "<h1 style='text-align: center;'>TANAMAN SEMUSIM</h1>"
-        "<p style='text-align: center;'>Tanaman perkebunan tahunan adalah tanaman yang memiliki siklus hidup lebih dari <br>satu tahun dan memerlukan waktu lebih lama untuk tumbuh, berkembang, dan <br>menghasilkan hasil yang siap panen. Ini berbeda dengan tanaman perkebunan <br>semusim yang hanya hidup dalam satu musim pertumbuhan.</p>",
+        "<h1 style='text-align: center;'>TANAMAN SEMUSIM</h1>",
         unsafe_allow_html=True
         )
+        col1, col2, col3 = st.columns([1, 1, 1])  # Membagi layout menjadi 3 bagian
+        with col2:
+            st.markdown(
+                "<p style='text-align: center;'>Tanaman perkebunan musiman adalah tanaman yang ditanam dan dipanen dalam satu musim pertumbuhan tanaman. Mereka memiliki siklus hidup yang relatif singkat, biasanya sekitar enam bulan hingga satu tahun, tergantung pada spesiesnya. Setelah masa tanam yang relatif singkat, tanaman ini siap dipanen untuk dijual atau digunakan untuk konsumsi.</p>",
+        unsafe_allow_html=True
+        )
+            
         col1, col2, col3 = st.columns([1, 4, 1])  # Membagi layout menjadi 3 bagian
         with col2:
             st.image('kelapa.jpg', use_column_width=True, output_format='JPEG')
+
         st.markdown(
-        "<h1 style='text-align: center;'>TANAMAN TAHUNAN</h1>"
-        "<p style='text-align: center;'>Tanaman perkebunan musiman adalah tanaman yang ditanam dan dipanen dalam satu <br>musim pertumbuhan tanaman. Mereka memiliki siklus hidup yang relatif singkat, <br>biasanya sekitar enam bulan hingga satu tahun, tergantung pada spesiesnya. Setelah <br>masa tanam yang relatif singkat, tanaman ini siap dipanen untuk dijual atau digunakan <br>untuk konsumsi.</p>",
+        "<h1 style='text-align: center;'>TANAMAN TAHUNAN</h1>",
         unsafe_allow_html=True
         )
+        col1, col2, col3 = st.columns([1, 1, 1])  # Membagi layout menjadi 3 bagian
+        with col2:
+            st.markdown(
+                "<p style='text-align: center;'>Tanaman perkebunan tahunan adalah tanaman yang memiliki siklus hidup lebih dari satu tahun dan memerlukan waktu lebih lama untuk tumbuh, berkembang, dan menghasilkan hasil yang siap panen. Ini berbeda dengan tanaman perkebunan semusim yang hanya hidup dalam satu musim pertumbuhan.</p>",
+        unsafe_allow_html=True
+        )
+
+
+
         col1, col2, col3 = st.columns([1, 4, 1])  # Membagi layout menjadi 3 bagian
         with col2:
             st.image('teh.jpg', use_column_width=True, output_format='JPEG')
@@ -265,7 +281,7 @@ def main():
 
 
                 if filtered_table_data:
-                    st.write("Hasil Prediksi:")
+                    st.write("Hasil Prediksi dalam Dolar:")
                     df = pd.DataFrame(filtered_table_data, columns=["Negara", "Predicted Price", "Harga Jual"])
                     st.table(df)
                 else:
@@ -298,10 +314,16 @@ def main():
     elif menu == "Grafik Linear":
         # Menyisipkan teks di tengah
         st.markdown(
-            "<h1 style='text-align: center;'>Aplikasi Prediksi Regresi Linear</h1>"
-            "<p style='text-align: center;'>Grafik regresi adalah representasi visual dari hubungan antara dua atau lebih variabel di dalam data. <br>Tujuan utama dari grafik regresi adalah untuk menunjukkan pola atau tren dalam data <br>dan memprediksi nilai variabel dependen berdasarkan variabel independen.</p>",
-            unsafe_allow_html=True
-        )
+                "<h1 style='text-align: center;'>Aplikasi Prediksi Regresi Linear</h1>",
+                unsafe_allow_html=True
+            )
+        col1, col2, col3 = st.columns([1, 1, 1])  # Membagi layout menjadi 3 bagian
+        with col2:
+            st.markdown(
+                "<p style='text-align: center;'>Grafik regresi adalah representasi visual dari hubungan antara dua atau lebih variabel di dalam data. Tujuan utama dari grafik regresi adalah untuk menunjukkan pola atau tren dalam data dan memprediksi nilai variabel dependen berdasarkan variabel independen.</p>",
+                unsafe_allow_html=True
+            )
+
 
         # Membuat bagian kosong di sisi kiri dan kanan
         col1, col2, col3 = st.columns([1, 1, 1])  # Membagi layout menjadi 3 bagian
