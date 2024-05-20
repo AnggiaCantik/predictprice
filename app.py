@@ -114,8 +114,35 @@ def linear_regression_plot(komoditas, negara):
     else:
         return None, None
 
+
+# CSS untuk membuat menu lebih responsif
+def inject_css():
+    st.markdown("""
+    <style>
+    @media (max-width: 600px) {
+        .css-1v3fvcr.e1fqkh3o1 {
+            display: flex;
+            flex-direction: column;
+        }
+        .css-1v3fvcr.e1fqkh3o1 .nav-item {
+            margin: 5px 0;
+        }
+        .css-1v3fvcr.e1fqkh3o1 .nav-link {
+            display: block;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 def main():
     st.set_page_config(page_title="Aplikasi Prediksi Harga Komoditas", layout="wide")
+    
+    # Menyuntikkan CSS custom untuk responsivitas
+    inject_css()
+    
     menu = option_menu(
         menu_title=None,  # Judul menu, jika None tidak ada judul
         options=["Home", "Histori Data", "Prediksi Harga", "Grafik Harga", "Regresi Linear"],  # Opsi menu
@@ -260,8 +287,8 @@ def main():
                             filtered_price = predicted_prices[24 + bulan - 1]
                         else:
                             continue
-                        harga_jual = round(filtered_price * volume_input, 2)
-                        filtered_table_data.append([negara, round(filtered_price, 1), round(harga_jual, 1)])
+                        harga_jual = round(filtered_price * volume_input, 1)
+                        filtered_table_data.append([negara, f"{filtered_price:.1f}", f"{harga_jual:.1f}"])
 
 
                 if filtered_table_data:
