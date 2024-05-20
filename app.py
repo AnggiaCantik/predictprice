@@ -114,38 +114,11 @@ def linear_regression_plot(komoditas, negara):
     else:
         return None, None
 
-
-# CSS untuk membuat menu lebih responsif
-def inject_css():
-    st.markdown("""
-    <style>
-    @media (max-width: 600px) {
-        .css-1v3fvcr.e1fqkh3o1 {
-            display: flex;
-            flex-direction: column;
-        }
-        .css-1v3fvcr.e1fqkh3o1 .nav-item {
-            margin: 5px 0;
-        }
-        .css-1v3fvcr.e1fqkh3o1 .nav-link {
-            display: block;
-            text-align: center;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
 def main():
     st.set_page_config(page_title="Aplikasi Prediksi Harga Komoditas", layout="wide")
-    
-    # Menyuntikkan CSS custom untuk responsivitas
-    inject_css()
-    
     menu = option_menu(
         menu_title=None,  # Judul menu, jika None tidak ada judul
-        options=["Home", "Histori Data", "Prediksi Harga", "Grafik Harga", "Regresi Linear"],  # Opsi menu
+        options=["Home", "Histori Data", "Prediksi", "Grafik Harga", "Grafik Linear"],  # Opsi menu
         icons=["house", "clock", "graph-up-arrow", "bar-chart-line", "calculator"],  # Ikon untuk setiap opsi
         menu_icon="cast",  # Ikon untuk menu secara keseluruhan
         default_index=0,  # Indeks opsi yang dipilih secara default
@@ -237,7 +210,7 @@ def main():
             negara_komoditas_grouped = process_data()
             st.write(negara_komoditas_grouped, wide=True)
 
-    elif menu == "Prediksi Harga":
+    elif menu == "Prediksi":
         col1, col2, col3 = st.columns([1,  1, 1])  # Membagi layout menjadi 3 bagian
         with col2:
             st.title("Prediksi Harga Komoditas")
@@ -322,7 +295,7 @@ def main():
             if st.button("Hitung Prediksi Harga"):
                 if not generate_graph(komoditas.lower(), negara.lower(), file_path):
                     st.error("Data tidak ditemukan.")
-    elif menu == "Regresi Linear":
+    elif menu == "Grafik Linear":
         # Menyisipkan teks di tengah
         st.markdown(
             "<h1 style='text-align: center;'>Aplikasi Prediksi Regresi Linear</h1>"
